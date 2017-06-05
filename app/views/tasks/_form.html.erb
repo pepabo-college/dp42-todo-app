@@ -4,7 +4,7 @@
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% @task.erros.full_messages.each do |message|
+      <% @task.erros.full_messages.each do |message| %>
         <li><%= message %></li>
        <% end >
       </ul>
