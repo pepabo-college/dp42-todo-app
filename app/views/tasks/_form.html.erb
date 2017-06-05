@@ -1,12 +1,12 @@
 <%= form_for(@task) do |f| %>
-  <% if @task.erros.any? %>
+  <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% @task.erros.full_messages.each do |message| %>
+      <% @task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-       <% end >
+       <% end %>
       </ul>
     </div>
   <% end %>
