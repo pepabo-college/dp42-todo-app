@@ -16,5 +16,6 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
+    <footer><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></footer>
   </body>
 </html>
