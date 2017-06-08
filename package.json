@@ -1,8 +1,18 @@
 {
   "name": "dp42-todo-app",
   "private": true,
+  "scripts": {
+    "build": "webpack --config webpack.config.js --colors",
+    "watch": "webpack --config webpack.config.js -w --colors"
+  },
   "dependencies": {},
   "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "file-loader": "^0.11.2",
+    "image-webpack-loader": "^3.3.1",
     "webpack": "^2.6.1"
   }
 }
