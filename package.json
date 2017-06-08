@@ -1,5 +1,8 @@
 {
   "name": "dp42-todo-app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^2.6.1"
+  }
 }
