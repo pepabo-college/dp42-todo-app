@@ -31,10 +31,15 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'GET #new' do
-    context 'ログインしていない状態でアクセスしたとき'
+    context 'ログインしていない状態でアクセスしたとき' do
       before do
         get :index
       end
+
+      it 'ログインページにリダイレクトされること' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
 
     context 'ログインユーザーがアクセスしたとき' do
       login_user
