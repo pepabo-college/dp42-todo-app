@@ -5,7 +5,10 @@
     "build": "webpack --config webpack.config.js --colors",
     "watch": "webpack --config webpack.config.js -w --colors"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",

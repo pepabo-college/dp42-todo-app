@@ -1,1 +1,2 @@
-import jpg from '../images/test.jpg'
+import React from 'react'
+import ReactDOM from 'react-dom'
