@@ -24,22 +24,37 @@ loadTaskFromServer() {
   });
 }
 
-  handleTaskSubmit(task) {
-    var tasks = this.state.data;
-    var newTasks = tasks.concat([task]);
-    this.setState({data: newTasks});
-    request
-      .post(this.props.url)
-      .accept('application/json')
-      .send({task: task})
-      .end((err, res) => {
-        if (err || !res.ok) {
-          console.error(this.props.url, status, err.toString());
-        } else {
-          this.setState({data: newTasks});
-        }
-      });
-  }
+handleTaskSubmit(task) {
+  var tasks = this.state.data;
+  var newTasks = tasks.concat([task]);
+  this.setState({data: newTasks});
+  request
+    .post(this.props.url)
+    .accept('application/json')
+    .send({task: task})
+    .end((err, res) => {
+      if (err || !res.ok) {
+        console.error(this.props.url, status, err.toString());
+      } else {
+        this.setState({data: newTasks});
+      }
+    });
+}
+
+taskDelete(task) {
+  request
+    .delete(this.props.url + '/' + task.id)
+    .accept('application/json')
+    .send(task)
+    .end((err, res) => {
+      if (err || !res.ok) {
+        console.error(this.props.url, status, err.toString());
+      } else {
+        var currentTasks = this.state.data.filter((data) => { return data.id != task.id });
+        this.setState({data: currentTasks});
+      }
+    });
+}
 
 componentDidMount() {
   this.loadTaskFromServer();
@@ -59,7 +74,7 @@ componentDidMount() {
             <th colSpan="3"></th>
           </tr>
           </thead>
-          <TaskList data = {this.state.data} />
+          <TaskList data = {this.state.data} onTaskDelete={this.taskDelete.bind(this)} />
         </table>
       </div>
     );
