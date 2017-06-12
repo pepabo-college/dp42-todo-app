@@ -7,7 +7,8 @@ export default class TaskList extends React.Component {
       return(
         <Task key={task.id} id={task.id}
               content={task.content} status={task.status}
-              onTaskDelete={this.props.onTaskDelete} >
+              onTaskDelete={this.props.onTaskDelete}
+              onTaskUpdate={this.props.onTaskUpdate}>
         </Task>
       );
     });

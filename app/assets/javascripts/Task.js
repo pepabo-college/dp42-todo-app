@@ -6,6 +6,11 @@ export default class Task extends React.Component {
     this.props.onTaskDelete({id: this.props.id});
   }
 
+  handleUpdate(e) {
+    e.preventDefault();
+    this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}});
+  }
+
   render() {
     return(
       <tr key={this.props.id}>
@@ -13,7 +18,11 @@ export default class Task extends React.Component {
           {this.props.content}
         </td>
         <td>
-          {this.props.status}
+        <select defaultValue={this.props.status} onChange={this.handleUpdate.bind(this)}>
+          <option value="todo" key="todo">todo</option>
+          <option value="doing" key="doing">doing</option>
+          <option value="done" key="done">done</option>
+        </select>
         </td>
         <td>
           <button type="button" name="delete" value="delete" onClick={this.handleDelete.bind(this)} >Delete</button>
