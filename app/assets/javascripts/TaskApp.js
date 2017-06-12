@@ -78,7 +78,7 @@ componentDidMount() {
     return (
       <div className="taskApp">
         <TaskForm onTaskSubmit={this.handleTaskSubmit.bind(this)}/>
-        <table>
+        <table className="table table-striped">
           <thead>
           <tr>
             <th>Content</th>
