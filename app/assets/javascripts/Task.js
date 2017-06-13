@@ -32,7 +32,6 @@ export default class Task extends React.Component {
 
   handleBlurEdit(e) {
     e.preventDefault();
-    this.props.onTaskUpdate({task: {id: this.props.id, content: e.target.value}});
     this.setState({ isEditable: false });
   }
 
