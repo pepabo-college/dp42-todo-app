@@ -15,7 +15,6 @@ RSpec.describe TasksController, type: :controller do
 
     context 'ログインユーザーがアクセスしたとき' do
       login_user
-
       before do
         get :index
       end
