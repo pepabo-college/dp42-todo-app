@@ -21,3 +21,7 @@
 /yarn-error.log
 
 .byebug_history
+
+#vagran up時に生成されるファイルを除外
+.vagrant/
+/db/.nfs*
