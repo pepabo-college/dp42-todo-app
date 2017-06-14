@@ -57,6 +57,8 @@ gem 'devise'
 
 gem 'jquery-rails'
 
+gem 'mysql2'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 end
