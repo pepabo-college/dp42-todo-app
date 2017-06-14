@@ -59,36 +59,43 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'POST #create' do
+    subject {
+      Proc.new {
+      post :create, params: {task: FactoryGirl.attributes_for(:task)}
+      }
+    }
+
     context 'ログインユーザーでない場合' do
       it 'ステータスコード302を返すこと' do
-        post :create, params: {task: FactoryGirl.attributes_for(:task)}
+        subject.call
         expect(response.status).to eq(302)
       end
 
       it 'データベースに新しいTODOが登録できないこと' do
         expect{
-          post :create, params: {task: FactoryGirl.attributes_for(:task)}
+          subject.call
         }.to change(Task, :count).by(0)
       end
 
-      it 'ログインページにリダイレクトされること'
+      it 'ログインページにリダイレクトされること' do
+        subject.call
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
 
     context 'ログインユーザーの場合' do
       login_user
       it 'ステータスコード302を返すこと' do
-        post :create, params: {task: FactoryGirl.attributes_for(:task)}
+          subject.call
         expect(response.status).to eq(302)
       end
 
       it 'データベースに新しいTODOが登録されること' do
-        expect{
-          post :create, params: {task: FactoryGirl.attributes_for(:task)}
-        }.to change(Task, :count).by(1)
+        expect{ subject.call }.to change(Task, :count).by(1)
       end
 
       it 'タスクページにリダイレクトされること' do
-        post :create, params: {task: FactoryGirl.attributes_for(:task)}
+          subject.call
         expect(response).to redirect_to(task_path(assigns(:task)))
       end
     end
